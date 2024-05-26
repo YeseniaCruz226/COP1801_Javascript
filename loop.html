@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<h1 id="number"></h1>
+<p id="green"></p>
+<script>
+for (i = 0; i <=10; i++) {
+if(i % 2 == 0) {
+document.getElementById("number").innerHTML += i + " is even <br>";
+}
+else {
+document.getElementById("number").innerHTML += i + " is odd <br>";
+}
+}
+
+var myNum = "";
+        do {
+            myNum = parseInt(prompt("Pick a number 5 through 20:"));
+        } while (myNum < 5 || myNum > 20);
+
+        let counter = 1;
+        while (counter <= myNum) {
+            console.log(`Loop counter: ${counter}`);
+            counter++;
+        }
+        document.getElementById("green").innerHTML = myNum;
+
+const subject = ["Accounting", "Algebra", "Programming", "Art", "Data Analytics"];
+
+const commaSeparated = subject.join(', ');
+console.log(commaSeparated);
+
+</script>
+</body>
+</html>
