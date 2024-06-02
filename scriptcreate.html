@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+ <form id="tipForm">
+        <label for="serviceAmount">Enter the amount of the service recieved: $</label>
+        <input type="number" id="serviceAmount" step="0.01" required>
+        <br>
+        <label for="serviceQuality">How was the service quality:</label>
+        <select id="serviceQuality" required>
+            <option value="great">Great</option>
+            <option value="fine">fine</option>
+            <option value="bad">bad</option>
+        </select>
+        <br>
+        <button type="button" onclick="calculateTip()">Calculate Tip</button>
+    </form>
+    <p id="tipResult"></p>
+	<form id="serviceForm">
+        <label for="serviceAmount">Enter the amount of the service: $</label>
+        <input type="number" id="serviceAmount" step="0.01" required>
+        <br>
+        <button type="button" onclick="verifyServiceAmount()">Confirm Amount</button>
+    </form>
+    <p id="verificationResult"></p>
+
+    <script>
+        function calculateTip() {
+            const serviceAmount = parseFloat(document.getElementById("serviceAmount").value);
+            const serviceQuality = document.getElementById("serviceQuality").value;
+
+            const tipPercentages = {
+                great: 0.20,
+                ok: 0.15,
+                poor: 0.10
+            };
+
+            if (serviceQuality in tipPercentages) {
+                const tipAmount = serviceAmount * tipPercentages[serviceQuality];
+                const totalAmount = serviceAmount + tipAmount;
+                document.getElementById("tipResult").textContent = `Tip amount: $${tipAmount.toFixed(2)} (Total amount: $${totalAmount.toFixed(2)})`;
+            } else {
+                document.getElementById("tipResult").textContent = "Invalid service quality. Pick 'great', 'fine', or 'bad'.";
+            }
+        }
+		        function verifyServiceAmount() {
+            const serviceAmount = parseFloat(document.getElementById("serviceAmount").value);
+
+            if (serviceAmount >= 5.00 && serviceAmount <= 500.00) {
+                document.getElementById("verificationResult").textContent = "Valid service amount!";
+            } else {
+                document.getElementById("verificationResult").textContent = "Incorrect service amount. Enter a value between $5.00 and $500.00.";
+            }
+        }
+    </script>	
+</body>
+</html>
