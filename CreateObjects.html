@@ -7,44 +7,36 @@
 </head>
 <body>
     <script>
-        // object literal 
-        const myDog = {
-            name: "Bandit",
-            breed: "Terrier",
-            color: "White",
-            age: 2,
-            mySound: "I'm small but I'm mighty! I'm from a show called Johnny Quest, he's my owner and he's 11 years old. The show is from 1964 to 1965.",
-        };
+const myDog = {
+  name: "Bandit",
+  breed: "Terrier",
+  TVProgram: "Johnny Quest",
+  notes: "Boys best friend",
+  mySound: "I'm small but I'm mighty! I'm from a show called Johnny Quest, he's my owner and he's 11 years old. The show is from 1964 to 1965."
+};
 
-     
-        console.log(`Hello ${myDog.name}!`);
-        console.log(`Breed: ${myDog.breed}`);
-        console.log(`Color: ${myDog.color}`);
-        console.log(`Age: ${myDog.age} years old`);
-        console.log(`Sound: ${myDog.mySound}`);
-        
-                function Dog(name, breed, color, age) {
-            this.name = name;
-            this.breed = breed;
-            this.color = color;
-            this.age = age;
-            this.canTalk = true; 
-            this.myGreeting = function () {
-                console.log(`Hi! I'm ${this.name}, a ${this.color} ${this.breed}.`);
-                console.log(`I'm ${this.age} years old.`);
-                if (this.canTalk) {
-                    console.log("And I talk!");
-                } else {
-                    console.log("But I can't talk.");
-                }
-            };
-        }
+function Dog(name, breed, TVProgram, notes, canTalk) {
+  this.name = name;
+  this.breed = breed;
+  this.TVProgram = TVProgram;
+  this.notes = notes;
+  this.canTalk = canTalk;
+  this.myGreeting = function() {
+    if (this.canTalk) {
+      return "And I talk!";
+    } else {
+      return "But I cant talk";
+    }
+  };
+}
 
-        // myDogConst
-        const myDogConst = new Dog("Bandit", "Terrier", "White", 3);
+const myDogConst1 = new Dog("Akamaru", "Unknown", "Naruto", "Kiba Inuzukas Partner", true);
+const myDogConst2 = new Dog("Bluey", "Australian cattle dog", "Bluey", "A female anthropomorphic blue heeler puppy", false);
 
-        // myGreeting
-        myDogConst.myGreeting();
+for (const property in myDogConst1) {
+  console.log(`${property}: ${myDogConst1[property]}`);
+}
+
     </script>
 </body>
 </html>
